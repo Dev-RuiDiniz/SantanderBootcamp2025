@@ -65,6 +65,7 @@ class Ave(Animal):
 class Pinguim(Ave, Mamifero):
     def fazer_som(self):
         return f"{self.nome} faz um som de pinguim."
+    
 # Exemplo de uso das classes
 cachorro = Cachorro("Rex")  
 print(cachorro.fazer_som())  # Saída: Rex late.
