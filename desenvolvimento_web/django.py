@@ -12,6 +12,7 @@ class HelloWorldView(View):
     def get(self, request):
         """Método GET que retorna uma resposta simples."""
         return HttpResponse("Hello, World!")
+
 # Exemplo de uso do Django com templates:
 def home(request):
     """Exemplo de view que renderiza um template HTML."""
@@ -19,6 +20,7 @@ def home(request):
         'message': 'Bem-vindo ao Django!'
     }
     return render(request, 'home.html', context)
+
 # Exemplo de uso do Django com modelos:
 from django.db import models
 class Product(models.Model):
@@ -29,6 +31,7 @@ class Product(models.Model):
     def __str__(self):
         """Retorna uma representação em string do produto."""
         return self.name
+
 # Exemplo de uso do Django com formulários:
 from django import forms
 class ContactForm(forms.Form):
@@ -43,6 +46,7 @@ class ContactForm(forms.Form):
         if len(data) < 10:
             raise forms.ValidationError("A mensagem deve ter pelo menos 10 caracteres.")
         return data
+
 # Exemplo de uso do Django com autenticação:
 from django.contrib.auth import authenticate, login, logout
 def user_login(request):
@@ -61,6 +65,7 @@ def user_logout(request):
     """Exemplo de view para logout de usuário no Django."""
     logout(request)
     return HttpResponse("Logout realizado com sucesso!")
+
 # Exemplo de uso do Django com rotas:
 from django.urls import path
 urlpatterns = [
@@ -69,6 +74,7 @@ urlpatterns = [
     path('login/', user_login, name='user_login'),
     path('logout/', user_logout, name='user_logout'),
 ]
+
 # Exemplo de uso do Django com testes:
 from django.test import TestCase
 class ProductModelTest(TestCase):
@@ -85,6 +91,7 @@ class ProductModelTest(TestCase):
     def test_product_price(self):
         """Teste do preço do produto."""
         self.assertEqual(self.product.price, 19.99)
+
 # Exemplo de uso do Django com administração:
 from django.contrib import admin
 from .models import Product
@@ -94,6 +101,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price')
     search_fields = ('name',)
     list_filter = ('price',)
+
 # Exemplo de uso do Django com middleware:
 from django.utils.deprecation import MiddlewareMixin
 class CustomMiddleware(MiddlewareMixin):
@@ -107,8 +115,9 @@ class CustomMiddleware(MiddlewareMixin):
         """Método chamado para processar a resposta antes de ser enviada ao cliente."""
         print("Resposta enviada:", response.status_code)
         return response
+
 # Exemplo de uso do Django com cache:
-from django.core.cache import cache
+#from django.core.cache import cache
 def cached_view(request):
     """Exemplo de view que utiliza cache no Django."""
     cached_data = cache.get('cached_data')
@@ -117,6 +126,7 @@ def cached_view(request):
         cached_data = "Dados caros para calcular"
         cache.set('cached_data', cached_data, timeout=60)  # Cache por 60 segundos
     return HttpResponse(cached_data)
+
 # Exemplo de uso do Django com WebSockets:
 # from channels.generic.websocket import AsyncWebsocketConsumer 
 # class ChatConsumer(AsyncWebsocketConsumer):
